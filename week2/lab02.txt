@@ -102,7 +102,7 @@ Answer:grep "for W" parliament.txt
 
 b) Write a grep command that will list all the lines in the file where the MP's first name is Andrew. 
 
-Pipeline: egrep '(Hon|Ms|mr|Dr) Andrew' parliament.txt
+Pipeline: egrep '(Hon|Ms|Mr|Dr) Andrew' parliament.txt
 Answer:
 
 c) Write a grep command that will print all the lines in the file with three consecutive vowels.
@@ -122,77 +122,77 @@ Answer:
 
 f) Write a grep command to print all the lines in the file where there is a word in the MP's name or the electorate name ending in ng.
 
-Pipeline:
+Pipeline: egrep 'ng\b' parliament.txt
 Answer:
 
 g) Write a grep command that will print all the lines in the file where the MP's surname (last name) both begins and ends with a vowel. 
 
-Pipeline:
+Pipeline: egrep '\b[aeiouAEIOU][a-z]*[aeiou],' parliament.txt
 Answer:
 
 h) Write a grep command that will print all the lines in the file where the electorate name contains multiple words (separated by spaces or hyphens). 
 
-Pipeline:
+Pipeline: egrep 'for .*[- ].*\b$'
 Answer:
 
 == Question 5 == 
 
 Write a shell pipline which prints the 2nd most common MP first name. 
 
-Pipeline:
-Answer:
+Pipeline: { egrep '^The Hon Dr' parliament.txt | cut -d' ' -f4; egrep '^The Hon [^D]' parliament.txt | cut -d' ' -f3; egrep '^(Ms|Mr|Dr)' parliament.txt | cut -d' ' -f2 ; egrep 'The Hon D[^r]' parliament.txt | cut -d' ' -f3 ; }  | sort | uniq -c | sort -nr | head -n 2 | tail -n 1
+Answer: 5 Andrew
 
 == Question 6 ==
 
 a) How many total classes are there?
 
-Pipeline:
-Answer:
+Pipeline: wc classes.txt
+Answer: 316
 
 b) How many different courses have classes?
 
-Pipeline:
-Answer:
+Pipeline: cut -c-8 classes.txt | uniq | wc
+Answer: 42
 
 
 c) Write a pipeline which will print the course with the most classes?
 
-Pipeline:
-Answer:
+Pipeline: cut -c-8 classes.txt | sort | uniq -c | sort -nr | head -n 1
+Answer: ENGG1811
 
 d) Give a command line that prints the most frequently-used tut room? 
 
-Pipeline:
-Answer:
+Pipeline: cut -f5 classes.txt | sort | uniq -c | sort -nr | head -n 1
+Answer: OraganPhysU K17
 
 e) Give a command line that prints the most popular time-of-day for tutes? 
 
-Pipeline:
+Pipeline: cut -f4 classes.txt | cut -c5- | sort | uniq -c | sort -nr | head -n 1
 Answer:
 
 f) Which COMP courses run the most simultaneous classes of the same type? 
 
-Pipeline:
-Answer:
+Pipeline: egrep '^COMP' classes.txt | cut -f2,5,6,7 --complement | sort | uniq -c | sort -nr | heads
+Answer: COMP9814 and COMP9414
 
 g) Write a pipeline that prints list of the course names (only) of COMP courses that run simultaneous classes of the same type?
 
-Pipeline:
-Answer:
+Pipeline: egrep '^COMP' classes.txt |cut -f2,5,6,7 --complement | sort | uniq -c|  egrep '^\s*1' -v | cut -c9-16 | uniq
+Answer: 18 not 16
 
 == Question 7 (Challenge) ==
 
 a) Match any line containing at least one A and at least one B.
 
-Regexp:
+Regexp:'[A.*B|B.*A]'
 
 b) Match any line any line containing only the characters A and B such that all pairs of adjacent As occur before any pairs of adjacent Bs
 
-Regexp:
+Regexp: '(BB((B*)?(A?(B|\s)*))$|^(A*)?(B?(A|\s)*)$)'
 
 c) Match any line containing  only the characters A and B such that all number of A's is divisible by 4.
 
-Regexp:
+Regexp: '^((B*)A(B*)A(B*)A(B*)A(B*))+$'
 
 d) Match any line containing n As followed by n Bs and no other characters..
 
