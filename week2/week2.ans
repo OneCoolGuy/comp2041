@@ -1,0 +1,49 @@
+1.
+	a.^#
+	b.^[^#]
+	c."[ ]"$"
+	d.Barry|Harry|Larry|Parry
+	e.hello.*world
+	f.c[a|e]l[a|e]ndar
+	g.[\d,\d]+
+	h.[\"].*\n["]
+
+
+2.
+
+
+
+
+
+3.
+	a. 1 - Perl
+	b. infinite Perl Peeeeeeeeeeeerrrrrrrrrrrl
+	c. The number of characters Full-stop Full-stops
+	d. 9*10^3 1000 9999
+	e. 2^3 I love programing in Perl and C I hate programming in Python and Java
+
+4. No because it doens't scape before the "." so it would match any sequence of numbers.
+
+5. it prints the inverse of what would be found with a normal grep
+
+6. grep <\d{3}\.\d{2}\.\d{3}\.[1-25]> ips.txt
+
+7. a sequence of characters withouth a space between the first : and the second : of a line
+	:.*:{1}
+	b. any number of numbers together that couldahve a "." in then
+	^\d*\.?\d?*
+
+	c. ?
+
+	d. ?
+
+8. i. sort -b file.txt
+
+	ii.
+
+	iii.
+
+	a. i. grep [F][L]$
+	   ii. grep \d*[" "][9][0-9]
+	   iii. grep \s*\d*[02468][" "]\d
+
