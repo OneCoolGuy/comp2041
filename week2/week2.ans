@@ -1,11 +1,11 @@
 1.
 	a.^#
 	b.^[^#]
-	c."[ ]"$"
+	c."[ ]+$"
 	d.Barry|Harry|Larry|Parry
 	e.hello.*world
 	f.c[a|e]l[a|e]ndar
-	g.[\d,\d]+
+	g.\d,\d]+
 	h.[\"].*\n["]
 
 
