@@ -1,0 +1,6 @@
+#!/usr/bin/bash 
+
+sed 's/^\(A*\)B*/\1/' | A.txt
+sed 's/^A*\(B*\)$/\1/' | B.txt
+
+
