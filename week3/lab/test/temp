@@ -3,10 +3,9 @@
 17 ./cc
 10 ./d
 1000 ./e
-44 ./echon.sh
 0 ./empty
 42 ./file_size.sh
 1 ./large
 1 ./medium
 1 ./small
-11 ./temp
+10 ./temp
