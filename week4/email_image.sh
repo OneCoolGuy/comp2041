@@ -20,13 +20,12 @@
 for var in "$@"
 do
 	display "$var"
-	echo "hi"
+	echo "Address to e-mail this to?"
 	read email
 	title=`echo $var | rev | cut -c 5- | rev `
-	echo "$title"
 
 
-	echo "message"
+	echo "Message to accompany image?"
 	read message
 
 	echo "$message" | mutt -s $title $email -a $var 
