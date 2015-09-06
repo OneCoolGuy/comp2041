@@ -25,8 +25,8 @@ unless (open G, "wget -q -O- $url_post|"){
 
 if (!$flag1 ){
 	while ($line = <F>) {
-		if ($line =~ m/>P(rerequisite.*?)</)  {
-			@temp = ( $1 =~ m/([A-Z]{4}\d{4})/g);
+		if ($line =~ m/>[pP](re[-]?[Rr]?e?q?.*?)</)  {
+			@temp = ( $1 =~ m/([A-Za-z]{4}\d{4})/g);
 			push(@prereqund , @temp);
 		}
 	}
@@ -34,8 +34,8 @@ if (!$flag1 ){
 @temp = ();
 if (!$flag2){
 	while ($line = <G>){
-		if ($line =~ m/>P(rerequisite.*?)</)  {
-			@temp = ( $1 =~ m/([A-Z]{4}\d{4})/g);
+		if ($line =~ m/>[pP](re[-]?[Rr]?e?q?.*?)</)  {
+			@temp = ( $1 =~ m/([A-Za-z]{4}\d{4})/g);
 			push(@prereqpos, @temp);
 		}
 	}
@@ -68,8 +68,8 @@ if ($rflag){
 			@temp = ();
 			if (!$flag1 ){
 				while ($line = <F>) {
-					if ($line =~ m/>P(rerequisite.*?)</)  {
-						@temp = ( $1 =~ m/([A-Z]{4}\d{4})/g);
+					if ($line =~ m/>[pP](re[-]?[Rr]?e?q?.*?)</)  {
+						@temp = ( $1 =~ m/([A-Za-z]{4}\d{4})/g);
 						push(@prereqund , @temp);
 					}
 				}
@@ -77,8 +77,8 @@ if ($rflag){
 			@temp = ();
 			if (!$flag2){
 				while ($line = <G>){
-					if ($line =~ m/>P(rerequisite.*?)</)  {
-						@temp = ( $1 =~ m/([A-Z]{4}\d{4})/g);
+					if ($line =~ m/>[pP](re[-]?[Rr]?e?q?.*?)</)  {
+						@temp = ( $1 =~ m/([A-Za-z]{4}\d{4})/g);
 						push(@prereqpos, @temp);
 					}
 				}
@@ -95,6 +95,12 @@ if ($rflag){
 	}
 }
 
+	
+$count = 0;
+foreach $line (@prereq){
+	$prereq[$count] = uc $line;
+	$count = $count + 1;
+}
 	
 sub uniq {
     my %seen;

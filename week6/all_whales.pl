@@ -29,7 +29,7 @@ foreach $line (@lines) {
 @whales = sort @whales;
 
 foreach $whale (@whales){
-	print "$whale observations: $number_of_pods{$whale} pods, $number_of_ind{$whale} individuals\n";
+	print "$whale observations:  $number_of_pods{$whale} pods, $number_of_ind{$whale} individuals\n";
 }
 
 
